@@ -41,7 +41,7 @@
 }
 + (NSNumber *(^)(double))dou{
     return ^(double num){
-        return [NSDecimalNumber numberWithDouble:num];
+        return [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%lf",num]];
     };
 }
 + (NSNumber *(^)(double))lon{

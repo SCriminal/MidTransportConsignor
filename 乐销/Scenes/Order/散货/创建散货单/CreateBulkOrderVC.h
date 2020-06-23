@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface CreateBulkOrderVC : BaseTableVC
+@property (nonatomic, strong) ModelBulkCargoOrder *modelCopy;
 
 @end

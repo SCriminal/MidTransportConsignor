@@ -208,7 +208,22 @@
     }
     return _conPhone;
 }
-
+- (UIButton *)btnCopy{
+    if (!_btnCopy) {
+        _btnCopy = ^(){
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(90), W(30));
+            btn.backgroundColor = [UIColor whiteColor];
+            [btn setTitle:@"复制下单" forState:UIControlStateNormal];
+            btn.titleLabel.fontNum = F(13);
+            [btn setTitleColor:COLOR_ORANGE forState:UIControlStateNormal];
+            [GlobalMethod setRoundView:btn color:COLOR_ORANGE numRound:W(15) width:1];
+            [btn addTarget:self action:@selector(btnCopyClick) forControlEvents:UIControlEventTouchUpInside];
+            return btn;
+        }();
+    }
+    return _btnCopy;
+}
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -235,7 +250,8 @@
         [self.viewBG addSubview:self.dotBlue];
         [self.viewBG addSubview:self.dotRed];
         [self.viewBG addSubview:self.colorLine];
-        
+        [self.viewBG addSubview:self.btnCopy];
+
 //        [self.viewBG addSubview:self.ivPhone];
 //        [self.viewBG addSubview:self.ivUser];
 //        [self.viewBG addSubview:self.conPhone];
@@ -293,12 +309,11 @@
     
     self.lineVertical.frame = CGRectMake(self.dotRed.centerX-1, self.dotRed.centerY, 1, self.dotBlue.centerY - self.dotRed.centerY);
     
+    self.btnCopy.rightTop = XY(SCREEN_WIDTH - W(25), [self.contentView addLineFrame:CGRectMake(W(25), self.labelAddressTo.bottom + W(20), SCREEN_WIDTH - W(50), 1)] +W(15)) ;
     
     
-  
-    
-    
-    self.viewBG.height = self.labelAddressTo.bottom +W(16);
+
+    self.viewBG.height = self.btnCopy.bottom +W(16);
     self.ivBg.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.viewBG.height+W(10));
     //设置总高度
     self.height = self.viewBG.bottom;
@@ -311,5 +326,9 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
-
+- (void)btnCopyClick{
+    if (self.blockCopyClick) {
+        self.blockCopyClick(self.model);
+    }
+}
 @end

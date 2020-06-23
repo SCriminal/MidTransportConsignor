@@ -68,6 +68,8 @@
             model.string = @"发货地";
             model.hideSubState = true;
             model.placeHolderString = @"选择发货地 (必选)";
+            model.subString = [NSString stringWithFormat:@"%@%@%@",UnPackStr(self.modelCopy.startProvinceName),[self.modelCopy.startProvinceName isEqualToString:self.modelCopy.startCityName]?@"":UnPackStr(self.modelCopy.startCityName),UnPackStr(self.modelCopy.startTownName)];
+            model.identifier = strDotF(self.modelCopy.startTownId);
             model.blocClick = ^(ModelBaseData *model) {
                 [GlobalMethod endEditing];
                 SelectDistrictView * selectView = [SelectDistrictView new];
@@ -91,6 +93,7 @@
             model.imageName = @"";
             model.string = @"详细地址";
             model.placeHolderString = @"输入详细地址 (必填)";
+            model.subString = self.modelCopy.startAddr;
             return model;
         }();
     }
@@ -104,6 +107,7 @@
             model.imageName = @"";
             model.string = @"联系人";
             model.placeHolderString = @"输入发货联系人姓名";
+            model.subString = self.modelCopy.startContact;
             return model;
         }();
     }
@@ -117,6 +121,7 @@
             model.imageName = @"";
             model.string = @"联系电话";
             model.placeHolderString = @"输入发货联系人电话";
+            model.subString = self.modelCopy.shipperPhone;
             return model;
         }();
     }
@@ -133,6 +138,7 @@
             model.hideSubState = true;
             model.hideState = true;
             model.placeHolderString = @"选择发货时间 (必选)";
+            model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelCopy.startTime andFormatter:TIME_MIN_CN];
             model.blocClick = ^(ModelBaseData *item) {
                 [GlobalMethod endEditing];
                 DatePicker * datePickerView = [DatePicker initWithMinDate:[GlobalMethod exchangeStringToDate:@"1900" formatter:@"yyyy"] dateSelectBlock:^(NSDate *date) {
@@ -157,6 +163,9 @@
             model.string = @"收货地";
             model.hideSubState = true;
             model.placeHolderString = @"选择收货地 (必选)";
+            model.subString = [NSString stringWithFormat:@"%@%@%@",UnPackStr(self.modelCopy.endProvinceName),[self.modelCopy.endProvinceName isEqualToString:self.modelCopy.endCityName]?@"":UnPackStr(self.modelCopy.endCityName),UnPackStr(self.modelCopy.endTownName)];
+            model.identifier = strDotF(self.modelCopy.endTownId);
+
             model.blocClick = ^(ModelBaseData *model) {
                 [GlobalMethod endEditing];
                 SelectDistrictView * selectView = [SelectDistrictView new];
@@ -180,6 +189,7 @@
             model.imageName = @"";
             model.string = @"详细地址";
             model.placeHolderString = @"输入详细地址 (必填)";
+            model.subString = self.modelCopy.endAddr;
             return model;
         }();
     }
@@ -193,6 +203,7 @@
             model.imageName = @"";
             model.string = @"收货企业";
             model.placeHolderString = @"输入收货企业名称 (必填)";
+            model.subString = self.modelCopy.endEntName;
             return model;
         }();
     }
@@ -206,6 +217,7 @@
             model.imageName = @"";
             model.string = @"联系人";
             model.placeHolderString = @"输入收货联系人姓名";
+            model.subString = self.modelCopy.endContact;
             return model;
         }();
     }
@@ -219,6 +231,7 @@
             model.imageName = @"";
             model.string = @"联系电话";
             model.placeHolderString = @"输入发货联系人电话";
+            model.subString = self.modelCopy.endPhone;
             return model;
         }();
     }
@@ -235,6 +248,7 @@
             model.hideSubState = true;
             model.hideState = true;
             model.placeHolderString = @"选择截止收货时间 (必选)";
+            model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelCopy.endTime andFormatter:TIME_MIN_CN];
             model.blocClick = ^(ModelBaseData *item) {
                 [GlobalMethod endEditing];
                 DatePicker * datePickerView = [DatePicker initWithMinDate:[GlobalMethod exchangeStringToDate:@"1900" formatter:@"yyyy"] dateSelectBlock:^(NSDate *date) {
@@ -257,6 +271,7 @@
             model.imageName = @"";
             model.string = @"货物名称";
             model.placeHolderString = @"输入货物名称 (必填)";
+            model.subString = self.modelCopy.cargoName;
             return model;
         }();
     }
@@ -272,6 +287,7 @@
             model.identifier = @"元";
             model.hideSubState = true;
             model.placeHolderString = @"输入运单费用 (必填)";
+            model.subString =self.modelCopy.price?(NSNumber.dou(self.modelCopy.price/100.0).stringValue):nil;
             return model;
         }();
     }
@@ -285,10 +301,12 @@
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
             model.string = @"发货量";
-            model.identifier = @"车";
             model.hideState = true;
             model.hideSubState = false;
             model.placeHolderString = @"输入发货量 (必填)";
+
+            model.subString = self.modelCopy.actualLoad?(NSNumber.dou(self.modelCopy.actualLoad).stringValue):nil;
+            model.identifier = isStr(self.modelCopy.loadUnit)?self.modelCopy.loadUnit:@"车";
             model.blocClick = ^(ModelBaseData *item) {
                 ListAlertView * listNew = [ListAlertView new];
                 NSArray * aryDateTypes = @[@"车",@"吨",@"立方米"];
@@ -328,6 +346,8 @@
             model.string = @"选择车辆";
             model.hideSubState = true;
             model.placeHolderString = @"选择车辆 (必选)";
+            model.subString = self.modelCopy.vehicleNumber;
+            model.identifier =self.modelCopy.vehicleId?(NSNumber.dou(self.modelCopy.vehicleId).stringValue):nil;
             WEAKSELF
             model.blocClick = ^(ModelBaseData *modelClick) {
                 [GlobalMethod endEditing];
@@ -355,6 +375,7 @@
             model.string = @"司机姓名";
             model.placeHolderString = @"司机姓名";
             model.isChangeInvalid = true;
+            model.subString = self.modelCopy.driverName;
             return model;
         }();
     }
@@ -368,6 +389,7 @@
             model.imageName = @"";
             model.string = @"司机电话";
             model.placeHolderString = @"输入司机电话 (必填)";
+            model.subString = self.modelCopy.driverPhone;
             model.hideState = true;
             return model;
         }();
@@ -382,6 +404,8 @@
             model.imageName = @"";
             model.string = @"";
             model.placeHolderString = @"输入备注内容";
+            model.subString = self.modelCopy.internalBaseClassDescription;
+
             return model;
         }();
     }

@@ -31,8 +31,10 @@
 @property (strong, nonatomic) UIView *dotRed;
 @property (strong, nonatomic) UIView *colorLine;
 @property (strong, nonatomic) UIControl *conPhone;
+@property (strong, nonatomic) UIButton *btnCopy;
 
 @property (nonatomic, strong) ModelBulkCargoOrder *model;
+@property (nonatomic, strong) void (^blockCopyClick)(ModelBulkCargoOrder *);
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelBulkCargoOrder *)model;

@@ -270,6 +270,7 @@
 		D2E4837B1E5ABCF100D91AAD /* UINavigationController+EndEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */; };
 		D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */; };
 		D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F11C6C2097103600F18CBD /* UITextField+Text.m */; };
+		D2F4747224A1EE70003B30C5 /* CarType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F4747124A1EE70003B30C5 /* CarType.json */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2FD667620D254930048D351 /* module.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2FD667520D254920048D351 /* module.plist */; };
@@ -854,6 +855,7 @@
 		D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+KeyboardObserve.m"; sourceTree = "<group>"; };
 		D2F11C6B2097103600F18CBD /* UITextField+Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Text.h"; sourceTree = "<group>"; };
 		D2F11C6C2097103600F18CBD /* UITextField+Text.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Text.m"; sourceTree = "<group>"; };
+		D2F4747124A1EE70003B30C5 /* CarType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
@@ -2174,6 +2176,7 @@
 				D23F02F91E037F34004E768F /* GlobalMethod+UI.m */,
 				D2136CE81E13AAE9003B4B92 /* GlobalMethod+Data.h */,
 				D2136CE91E13AAE9003B4B92 /* GlobalMethod+Data.m */,
+				D2F4747124A1EE70003B30C5 /* CarType.json */,
 				D22A85BD1E2A16AF003CEB0A /* GlobalMethod+LocalDatas.h */,
 				D22A85BE1E2A16AF003CEB0A /* GlobalMethod+LocalDatas.m */,
 				D24091D41E5C2FE10049D41D /* GlobalMethod+Request.h */,
@@ -2844,6 +2847,7 @@
 				DAA3C9E71D668FF6009CFDF7 /* Images.xcassets in Resources */,
 				D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */,
 				DAAEC65E1E5E900E0034AED0 /* area.plist in Resources */,
+				D2F4747224A1EE70003B30C5 /* CarType.json in Resources */,
 				D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */,
 				D26F088820D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json in Resources */,
 				D2CF190B22548EF800542AEF /* uni_account_login_sdk_res.bundle in Resources */,
@@ -3350,6 +3354,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
+				MARKETING_VERSION = 1.0.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -3401,6 +3406,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
+				MARKETING_VERSION = 1.0.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",

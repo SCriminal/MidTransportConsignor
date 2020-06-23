@@ -140,12 +140,11 @@
 
 //转化车辆类型
 + (NSString *)exchangeCarType:(double)typeId{
-    NSArray * aryDateTypes = @[@"普通货车",@"厢式货车",@"罐式货车",@"牵引车",@"普通挂车",@"罐式挂车",@"集装箱挂车",@"仓栅式货车",@"封闭货车",@"平板货车",@"集装箱车",@"自卸货车",@"特殊结构货车",@"专项作业车",@"厢式挂车",@"仓栅式挂车",@"平板挂车",@"自卸挂车",@"专项作业挂车",@"车辆运输车",@"车辆运输车（单排）"];
-    NSArray * aryDateId = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21];
-    for (int i = 0; i<aryDateId.count; i++) {
-        NSNumber * num = aryDateId[i];
-        if (num.doubleValue == typeId) {
-            return aryDateTypes[i];
+   NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
+    NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
+    for (NSDictionary * dic in ary) {
+        if (typeId == [dic doubleValueForKey:@"value"]) {
+            return [dic stringValueForKey:@"label"];
         }
     }
     return @"";

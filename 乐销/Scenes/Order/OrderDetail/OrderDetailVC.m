@@ -16,6 +16,7 @@
 #import "RequestApi+Order.h"
 //share
 #import "ShareView.h"
+
 @interface OrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) OrderDetailTopView *topView;
@@ -177,4 +178,6 @@
         
     }];
 }
+
+
 @end

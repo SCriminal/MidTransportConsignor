@@ -16,6 +16,7 @@
 #import "OrderManagementBottomView.h"
 //detail vc
 #import "BulkCargoOrderDetailVC.h"
+#import "CreateBulkOrderVC.h"
 
 @interface BulkCargoListVC ()
 
@@ -63,7 +64,10 @@
     
     BulkCargoListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"BulkCargoListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
-    
+    WEAKSELF
+    cell.blockCopyClick = ^(ModelBulkCargoOrder *model) {
+        [weakSelf requestDetail:model];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,6 +103,19 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+- (void)requestDetail:(ModelBulkCargoOrder *)model{
+    [RequestApi requestBulkCargoDetailWithId:strDotF(model.iDProperty)                               entId:[GlobalData sharedInstance].GB_CompanyModel.iDProperty
+    delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+           ModelBulkCargoOrder *modelOrder = [ModelBulkCargoOrder modelObjectWithDictionary:response];
+           CreateBulkOrderVC * vc = [CreateBulkOrderVC new];
+              vc.modelCopy = modelOrder;
+              [GB_Nav pushViewController:vc animated:true];
+         
+           
+       } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+           
+       }];
 }
 
 @end

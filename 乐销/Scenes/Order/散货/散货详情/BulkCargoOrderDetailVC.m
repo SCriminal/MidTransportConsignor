@@ -15,6 +15,7 @@
 #import "RequestApi+BulkCargo.h"
 //share
 #import "ShareView.h"
+#import "CreateBulkOrderVC.h"
 
 
 @interface BulkCargoOrderDetailVC ()
@@ -28,12 +29,34 @@
 @property (nonatomic, strong) BulkCargoOrderDetailRemarkView *remarkView;
 @property (nonatomic, strong) BulkLoadImageView *loadImageView;;
 @property (nonatomic, strong) BulkLoadImageView *unloadImageView;;
+@property (nonatomic, strong) UIView *footerView;
 
 @end
 
 @implementation BulkCargoOrderDetailVC
 
 #pragma mark lazy init
+- (UIView *)footerView{
+    if (!_footerView) {
+        _footerView = [UIView new];
+        _footerView.backgroundColor = [UIColor clearColor];
+        _footerView.widthHeight = XY(SCREEN_WIDTH, W(45)+W(15)*2+iphoneXBottomInterval);
+        _footerView.bottom = SCREEN_HEIGHT;
+        [_footerView addSubview:^(){
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(355), W(45));
+            btn.backgroundColor = COLOR_ORANGE;
+            [btn setTitle:@"复制下单" forState:UIControlStateNormal];
+            btn.titleLabel.fontNum = F(15);
+            btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(15));
+            [btn addTarget:self action:@selector(copyClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [GlobalMethod setRoundView:btn color:[UIColor clearColor] numRound:5 width:0];
+            return btn;
+        }()];
+    }
+    return _footerView;
+}
 - (BaseNavView *)nav{
     if (!_nav) {
 //        _nav = [BaseNavView initNavBackTitle:@"运单详情" rightView:nil];
@@ -130,6 +153,7 @@
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     [self reconfigTableHeaderView];
+    self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.footerView.height;
     
     self.tableView.tableFooterView = ^(){
         UIView * view = [UIView new];
@@ -137,6 +161,8 @@
         view.backgroundColor = [UIColor clearColor];
         return view;
     }();
+
+    [self.view addSubview:self.footerView];
     [self addRefreshHeader];
     //request
     [self requestList];
@@ -229,5 +255,12 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+
+#pragma mark click
+- (void)copyClick{
+    CreateBulkOrderVC * vc = [CreateBulkOrderVC new];
+    vc.modelCopy = self.modelOrder;
+    [GB_Nav pushViewController:vc animated:true];
 }
 @end
