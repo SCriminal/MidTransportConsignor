@@ -19,6 +19,8 @@
 #import "BulkCargoListManageVC.h"
 //add vc
 #import "CreateBulkOrderVC.h"
+//filter view
+#import "BulkOrderFilterView.h"
 
 @interface OrderListManagementVC ()<SliderViewDelegate,UIScrollViewDelegate>
 @property (strong, nonatomic) SliderView *sliderView;
@@ -28,9 +30,11 @@
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) UIImageView *ivHead;
 @property (nonatomic, strong) UIControl *conHead;
+@property (nonatomic, strong) UIControl *conFilter;
 @property (nonatomic, strong) OrderManagementBottomView *bottomTypeSwitchView;
 @property (nonatomic, strong) BulkCargoListManageVC *bulkManageVC;
 @property (nonatomic, strong) UIImageView *iconAdd;
+@property (nonatomic, strong) BulkOrderFilterView *filterView;
 
 @end
 
@@ -64,7 +68,7 @@
         _iconAdd.backgroundColor = [UIColor clearColor];
         _iconAdd.image = [UIImage imageNamed:@"order_add"];
         _iconAdd.widthHeight = XY(W(90), W(90));
-        _iconAdd.hidden = true;
+//        _iconAdd.hidden = true;
         _iconAdd.rightBottom = XY(SCREEN_WIDTH, SCREEN_HEIGHT-W(5) -self.bottomTypeSwitchView.height);
         [_iconAdd addTarget:self action:@selector(addClick)];
     }
@@ -80,11 +84,27 @@
     }
     return _conHead;
 }
+- (UIControl *)conFilter {
+    if (!_conFilter) {
+        _conFilter = [UIControl new];
+        _conFilter.frame = CGRectMake(SCREEN_WIDTH - W(100), STATUSBAR_HEIGHT, W(100), NAVIGATIONBAR_HEIGHT - STATUSBAR_HEIGHT);
+        {
+            UIImageView * iv = [UIImageView new];
+                       iv.backgroundColor = [UIColor clearColor];
+                       iv.image = [UIImage imageNamed:@"nav_filter"];
+                       iv.widthHeight = XY(W(25),W(25));
+            iv.rightCenterY = XY(_conFilter.width-W(20),_conFilter.height/2.0);
+            [_conFilter addSubview:iv];
+        }
+        [_conFilter addTarget:self action:@selector(filterClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _conFilter;
+}
 - (BulkCargoListManageVC *)bulkManageVC{
     if (!_bulkManageVC) {
         _bulkManageVC = [BulkCargoListManageVC new];
         _bulkManageVC.view.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - HEIGHT_ORDERMANAGEMENTBOTTOMVIEW);
-        _bulkManageVC.view.hidden = true;
+//        _bulkManageVC.view.hidden = true;
     }
     return _bulkManageVC;
 }
@@ -134,25 +154,26 @@
         _bottomTypeSwitchView.bottom = SCREEN_HEIGHT;
         WEAKSELF
         _bottomTypeSwitchView.blockIndexChange = ^(int index) {
-            weakSelf.bulkManageVC.view.hidden = index == 0;
-            weakSelf.iconAdd.hidden = index == 0;
+            weakSelf.bulkManageVC.view.hidden = index == 1;
+            weakSelf.conFilter.hidden = weakSelf.bulkManageVC.view.hidden;
+            weakSelf.iconAdd.hidden = weakSelf.bulkManageVC.view.hidden;
         };
        
     }
     return _bottomTypeSwitchView;
 }
-#pragma mark 初始化子控制器
-- (void)setupChildVC
-{
-    for (int i = 0; i <self.arySliderDatas.count; i++) {
-        ModelBtn * model = self.arySliderDatas[i];
-        OrderListVC *sourceVC = [[OrderListVC alloc] init];
-        sourceVC.states = model.num;
-        sourceVC.view.frame = CGRectMake(SCREEN_WIDTH*i, 0, self.scAll.width, self.scAll.height);
-        sourceVC.tableView.height = sourceVC.view.height;
-        [self addChildViewController:sourceVC];
-        [self.scAll addSubview:sourceVC.view];
+- (BulkOrderFilterView *)filterView{
+    if (!_filterView) {
+        _filterView = [BulkOrderFilterView new];
+        WEAKSELF
+        _filterView.blockSearchClick = ^(NSString *strBillNo, NSString *strCarNo, NSString *strDriverPhone) {
+            weakSelf.bulkManageVC.billNo = isStr(strBillNo)?strBillNo:nil;
+            weakSelf.bulkManageVC.carNo = isStr(strCarNo)?strCarNo:nil;
+            weakSelf.bulkManageVC.driverPhone = isStr(strDriverPhone)?strDriverPhone:nil;
+            [weakSelf.bulkManageVC refreshAll];
+        };
     }
+    return _filterView;
 }
 - (SliderView *)sliderView{
     if (_sliderView == nil) {
@@ -174,10 +195,24 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        _nav = [BaseNavView initNavTitle:@"运单中心" leftView:self.conHead rightView:nil];
+        _nav = [BaseNavView initNavTitle:@"运单中心" leftView:self.conHead rightView:self.conFilter];
         _nav.line.hidden = true;
     }
     return _nav;
+}
+
+#pragma mark 初始化子控制器
+- (void)setupChildVC
+{
+    for (int i = 0; i <self.arySliderDatas.count; i++) {
+        ModelBtn * model = self.arySliderDatas[i];
+        OrderListVC *sourceVC = [[OrderListVC alloc] init];
+        sourceVC.states = model.num;
+        sourceVC.view.frame = CGRectMake(SCREEN_WIDTH*i, 0, self.scAll.width, self.scAll.height);
+        sourceVC.tableView.height = sourceVC.view.height;
+        [self addChildViewController:sourceVC];
+        [self.scAll addSubview:sourceVC.view];
+    }
 }
 #pragma mark view did load
 - (void)viewDidLoad {
@@ -222,6 +257,9 @@
 #pragma mark click
 - (void)headClick{
     [self.viewDeckController openSide:IIViewDeckSideLeft animated:YES];
+}
+- (void)filterClick{
+    [self.filterView show];
 }
 #pragma mark scrollview delegat
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

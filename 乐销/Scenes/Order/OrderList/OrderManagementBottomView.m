@@ -30,15 +30,15 @@
         _titleLeft = [UILabel new];
         _titleLeft.textColor = COLOR_ORANGE;
         _titleLeft.font =  [UIFont systemFontOfSize:F(10) weight:UIFontWeightRegular];
-        [_titleLeft  fitTitle:@"集运运单"  variable:0];
+        [_titleLeft  fitTitle:@"散货运单"  variable:0];
     }
     return _titleLeft;
 }
 - (UIImageView *)iconLeft{
     if (_iconLeft == nil) {
         _iconLeft = [UIImageView new];
-        _iconLeft.image = [UIImage imageNamed:@"order_bottom_left"];
-        _iconLeft.highlightedImage = [UIImage imageNamed:@"order_bottom_left_selected"];
+        _iconLeft.image = [UIImage imageNamed:@"order_bottom_right"];
+        _iconLeft.highlightedImage = [UIImage imageNamed:@"order_bottom_right_selected"];
         [_iconLeft setHighlighted:true];
         _iconLeft.widthHeight = XY(W(20),W(20));
     }
@@ -58,15 +58,16 @@
         _titleRight = [UILabel new];
         _titleRight.textColor = COLOR_999;
         _titleRight.font =  [UIFont systemFontOfSize:F(10) weight:UIFontWeightRegular];
-        [_titleRight  fitTitle:@"散货运单"  variable:0];
+        [_titleRight  fitTitle:@"集运运单"  variable:0];
     }
     return _titleRight;
 }
 - (UIImageView *)iconRight{
     if (_iconRight == nil) {
         _iconRight = [UIImageView new];
-        _iconRight.image = [UIImage imageNamed:@"order_bottom_right"];
-        _iconRight.highlightedImage = [UIImage imageNamed:@"order_bottom_right_selected"];
+        _iconRight.image = [UIImage imageNamed:@"order_bottom_left"];
+        _iconRight.highlightedImage = [UIImage imageNamed:@"order_bottom_left_selected"];
+
         _iconRight.widthHeight = XY(W(20),W(20));
     }
     return _iconRight;

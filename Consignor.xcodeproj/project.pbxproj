@@ -158,6 +158,7 @@
 		D2996A4521E6E3AA00562587 /* Collection_Image.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A3E21E6E3AA00562587 /* Collection_Image.m */; };
 		D2996A4821E6E3EE00562587 /* ModelCell_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A4721E6E3EE00562587 /* ModelCell_TextView.m */; };
 		D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A4A21E6E4C700562587 /* UpImageView.m */; };
+		D299762124A875250048CD2E /* BulkOrderFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D299762024A875250048CD2E /* BulkOrderFilterView.m */; };
 		D29C2DC322C3059B00BD2F64 /* ModelPackageType.m in Sources */ = {isa = PBXBuildFile; fileRef = D29C2DC222C3059B00BD2F64 /* ModelPackageType.m */; };
 		D29F6F611E4C0AB600B6F20B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29F6F601E4C0AB600B6F20B /* UserNotifications.framework */; };
 		D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A076E61E10EBC700CDCA0A /* DatePicker.m */; };
@@ -644,6 +645,8 @@
 		D2996A4721E6E3EE00562587 /* ModelCell_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCell_TextView.m; sourceTree = "<group>"; };
 		D2996A4A21E6E4C700562587 /* UpImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpImageView.m; sourceTree = "<group>"; };
 		D2996A4B21E6E4C700562587 /* UpImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpImageView.h; sourceTree = "<group>"; };
+		D299761F24A875250048CD2E /* BulkOrderFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkOrderFilterView.h; sourceTree = "<group>"; };
+		D299762024A875250048CD2E /* BulkOrderFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkOrderFilterView.m; sourceTree = "<group>"; };
 		D29C2DC122C3059B00BD2F64 /* ModelPackageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelPackageType.h; sourceTree = "<group>"; };
 		D29C2DC222C3059B00BD2F64 /* ModelPackageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelPackageType.m; sourceTree = "<group>"; };
 		D29F6F601E4C0AB600B6F20B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -2342,6 +2345,8 @@
 				D2C6D14D22DEC95D00A22EA6 /* 散货详情 */,
 				D2C6D14122DEBBFA00A22EA6 /* BulkCargoListManageVC.h */,
 				D2C6D14222DEBBFA00A22EA6 /* BulkCargoListManageVC.m */,
+				D299761F24A875250048CD2E /* BulkOrderFilterView.h */,
+				D299762024A875250048CD2E /* BulkOrderFilterView.m */,
 				D2C6D14422DEBC3100A22EA6 /* BulkCargoListVC.h */,
 				D2C6D14522DEBC3100A22EA6 /* BulkCargoListVC.m */,
 				D2C6D14722DEBDE600A22EA6 /* BulkCargoListCell.h */,
@@ -3084,6 +3089,7 @@
 				D2BC9ABC1DFFE16D00B0468E /* RequestApi.m in Sources */,
 				D2A0D0A123B217870097D3A2 /* CreateBulkOrderCell.m in Sources */,
 				D293B67F219AFC220073F316 /* BottomBtnView.m in Sources */,
+				D299762124A875250048CD2E /* BulkOrderFilterView.m in Sources */,
 				D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */,
 				D2A300372266D21800AE2EC3 /* GuideView.m in Sources */,
 				D2037600210718870054F8A6 /* AutoScView.m in Sources */,

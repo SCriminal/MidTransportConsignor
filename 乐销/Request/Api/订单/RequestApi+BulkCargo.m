@@ -14,12 +14,18 @@
  */
 +(void)requestBulkCargoOrderListWithwaybillStates:(NSString *)waybillStates
                                             entId:(double)entId
+                                    waybillNumber:(NSString *)waybillNumber
+                                       vehicleNumber:(NSString *)vehicleNumber
+                                      driverPhone:(NSString *)driverPhone
                                             page:(double)page
                                            count:(double)count
                                         delegate:(id <RequestDelegate>)delegate
                                          success:(void (^)(NSDictionary * response, id mark))success
                                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"entId":NSNumber.dou(entId),
+                          @"waybillNumber":RequestStrKey(waybillNumber),
+                          @"vehicleNumber":RequestStrKey(vehicleNumber),
+                          @"driverPhone":RequestStrKey(driverPhone),
                           @"waybillStates":RequestStrKey(waybillStates),
                           @"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count)};

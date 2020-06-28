@@ -9,5 +9,8 @@
 #import "BaseVC.h"
 
 @interface BulkCargoListManageVC : BaseVC
-
+@property (nonatomic, strong) NSString *billNo;
+@property (nonatomic, strong) NSString *carNo;
+@property (nonatomic, strong) NSString *driverPhone;
+- (void)refreshAll;
 @end

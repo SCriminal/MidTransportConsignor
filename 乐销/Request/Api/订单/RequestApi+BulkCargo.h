@@ -26,11 +26,14 @@ typedef NS_ENUM(NSUInteger, ENUM_BULKCARGO_ORDER_OPERATE_TYPE) {
  */
 +(void)requestBulkCargoOrderListWithwaybillStates:(NSString *)waybillState
                                             entId:(double)entId
-                                            page:(double)page
-                                           count:(double)count
-                                        delegate:(id <RequestDelegate>)delegate
-                                         success:(void (^)(NSDictionary * response, id mark))success
-                                         failure:(void (^)(NSString * errorStr, id mark))failure;
+                                    waybillNumber:(NSString *)waybillNumber
+                                    vehicleNumber:(NSString *)vehicleNumber
+                                      driverPhone:(NSString *)driverPhone
+                                             page:(double)page
+                                            count:(double)count
+                                         delegate:(id <RequestDelegate>)delegate
+                                          success:(void (^)(NSDictionary * response, id mark))success
+                                          failure:(void (^)(NSString * errorStr, id mark))failure;
 
 
 /**
@@ -49,10 +52,10 @@ typedef NS_ENUM(NSUInteger, ENUM_BULKCARGO_ORDER_OPERATE_TYPE) {
  拒单-司机（用户）
  */
 +(void)requestOperateBulkCargoRejectWithReason:(NSString *)reason
-                                            id:(double)identity 
-                                      delegate:(id <RequestDelegate>)delegate
-                                       success:(void (^)(NSDictionary * response, id mark))success
-                                       failure:(void (^)(NSString * errorStr, id mark))failure;
+id:(double)identity
+delegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+failure:(void (^)(NSString * errorStr, id mark))failure;
 //司机操作
 + (void)requestOperateBulkCargoOrder:(double)identytiy
                          operateType:(ENUM_BULKCARGO_ORDER_OPERATE_TYPE)operateType

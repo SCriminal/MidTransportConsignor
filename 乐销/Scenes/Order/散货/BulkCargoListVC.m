@@ -87,6 +87,9 @@
     NSString * strOrderType = self.type?strDotF((double)self.type):nil;
     [RequestApi requestBulkCargoOrderListWithwaybillStates:strOrderType
                                                      entId:[GlobalData sharedInstance].GB_CompanyModel.iDProperty
+                                             waybillNumber:self.billNo
+                                             vehicleNumber:self.carNo
+                                               driverPhone:self.driverPhone
                                                       page:self.pageNum count:50
                                                   delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;

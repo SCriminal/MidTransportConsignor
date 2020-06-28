@@ -11,6 +11,10 @@
 #import "OrderListVC.h"
 
 @interface BulkCargoListVC : BaseTableVC
+@property (nonatomic, strong) NSString *billNo;
+@property (nonatomic, strong) NSString *carNo;
+@property (nonatomic, strong) NSString *driverPhone;
+
 @property (nonatomic, assign) int type;
 
 @end

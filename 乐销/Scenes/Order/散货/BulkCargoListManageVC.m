@@ -150,8 +150,11 @@
 
 #pragma mark refresh all
 - (void)refreshAll{
-    for (BaseTableVC * tableVC in self.childViewControllers) {
-        if (tableVC && [tableVC isKindOfClass:[BaseTableVC class]]) {
+    for (BulkCargoListVC * tableVC in self.childViewControllers) {
+        if (tableVC && [tableVC isKindOfClass:[BulkCargoListVC class]]) {
+            tableVC.billNo = self.billNo;
+            tableVC.driverPhone = self.driverPhone;
+            tableVC.carNo = self.carNo;
             [tableVC refreshHeaderAll];
         }
     }
