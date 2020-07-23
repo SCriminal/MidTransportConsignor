@@ -61,7 +61,7 @@ NSString *const kModelCarUserId = @"userId";
 
 - (void)exchangeProperty{
     NSMutableArray * aryMu = [NSMutableArray array];
-    NSString * strVehicleType = [GlobalMethod exchangeVehicleType:strDotF(self.vehicleType)];
+    NSString * strVehicleType = [GlobalMethod exchangeCarType:(self.vehicleType)];
     if (isStr(strVehicleType)) {
         [aryMu addObject:strVehicleType];
     }

@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)judgeLoginState:(void(^)(void))blockLoginComplete;
 + (BOOL)isLoginSuccess;
 
-//exchangeVehicleType
-+ (NSString *)exchangeVehicleType:(NSString *)identity;
 @end
 
 NS_ASSUME_NONNULL_END
