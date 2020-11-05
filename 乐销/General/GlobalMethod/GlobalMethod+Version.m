@@ -29,6 +29,7 @@
 #import "RequestApi+Company.h"
 //ManageMotorcadeVC
 #import "ManageMotorcadeVC.h"
+#import "PrivateAlertView.h"
 
 @implementation GlobalMethod (Version)
 
@@ -151,6 +152,10 @@
 //        //第一次
 //        [GlobalMethod writeBool:true local:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false];
 //    }
+    if (![GlobalMethod readBoolLocal:LOCAL_PRIVATE_ALERT exchangeKey:false]) {
+           PrivateAlertView * privateView = [PrivateAlertView new];
+           [privateView show];
+       }
     //登录页
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];
