@@ -25,6 +25,7 @@
 		D2037605210719190054F8A6 /* ModelAliClient_Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037604210719180054F8A6 /* ModelAliClient_Base.m */; };
 		D203760921071F260054F8A6 /* ModelVersionUp.m in Sources */ = {isa = PBXBuildFile; fileRef = D203760821071F260054F8A6 /* ModelVersionUp.m */; };
 		D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2043B4A1F42CDAC0032AFB0 /* UIScrollView+Category.m */; };
+		D20CFB7625E5EBF7004AA70A /* BulkCargoOrderDetailTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20CFB7425E5EBF6004AA70A /* BulkCargoOrderDetailTrackView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -284,7 +285,6 @@
 		DA4BDFE11DB0CE120080ABAE /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BDFE01DB0CE120080ABAE /* AVKit.framework */; };
 		DA4BDFFD1DB0E4D90080ABAE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BDFFC1DB0E4D90080ABAE /* AssetsLibrary.framework */; };
 		DA7FCE141D7FC0960002C5CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA3CB551D66994C009CFDF7 /* QuartzCore.framework */; };
-		DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7FCE171D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd */; };
 		DA85246B1D65B5AE00AB04CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA85246A1D65B5AE00AB04CC /* main.m */; };
 		DA8524871D65B5AE00AB04CC /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8524861D65B5AE00AB04CC /* __Tests.m */; };
 		DA8524921D65B5AE00AB04CC /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8524911D65B5AE00AB04CC /* __UITests.m */; };
@@ -382,6 +382,8 @@
 		D203760821071F260054F8A6 /* ModelVersionUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelVersionUp.m; sourceTree = "<group>"; };
 		D2043B491F42CDAC0032AFB0 /* UIScrollView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Category.h"; sourceTree = "<group>"; };
 		D2043B4A1F42CDAC0032AFB0 /* UIScrollView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Category.m"; sourceTree = "<group>"; };
+		D20CFB7425E5EBF6004AA70A /* BulkCargoOrderDetailTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailTrackView.m; sourceTree = "<group>"; };
+		D20CFB7525E5EBF6004AA70A /* BulkCargoOrderDetailTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailTrackView.h; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -932,7 +934,6 @@
 				D2CF18FB22548E9E00542AEF /* libc++.1.tbd in Frameworks */,
 				D2CF190E22548EF800542AEF /* EAccountApiSDK.framework in Frameworks */,
 				DA852DBF1D65B9C500AB04CC /* libstdc++.tbd in Frameworks */,
-				DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */,
 				DA4BDFD91DB0C5880080ABAE /* AVFoundation.framework in Frameworks */,
 				D2CF190722548EF800542AEF /* account_login_sdk_core.framework in Frameworks */,
 				D29F6F611E4C0AB600B6F20B /* UserNotifications.framework in Frameworks */,
@@ -2371,6 +2372,8 @@
 		D2C6D14D22DEC95D00A22EA6 /* 散货详情 */ = {
 			isa = PBXGroup;
 			children = (
+				D20CFB7525E5EBF6004AA70A /* BulkCargoOrderDetailTrackView.h */,
+				D20CFB7425E5EBF6004AA70A /* BulkCargoOrderDetailTrackView.m */,
 				D2C6D15222DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.h */,
 				D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */,
 				D2C6D15C22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.h */,
@@ -3040,6 +3043,7 @@
 				D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */,
 				C69570561E861A7000ABB2ED /* NSString+Category.m in Sources */,
 				D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */,
+				D20CFB7625E5EBF7004AA70A /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D2037605210719190054F8A6 /* ModelAliClient_Base.m in Sources */,
 				D2DFD77B22938CA300363142 /* BaseTableVC+Authority.m in Sources */,
 				D2821CBC218AD9B90057688B /* ORChartView.m in Sources */,
@@ -3390,7 +3394,7 @@
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
 			name = Debug;
 		};
@@ -3444,7 +3448,7 @@
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
 			name = Release;
 		};

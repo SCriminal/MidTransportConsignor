@@ -16,6 +16,7 @@
 //share
 #import "ShareView.h"
 #import "CreateBulkOrderVC.h"
+#import "BulkCargoOrderDetailTrackView.h"
 
 
 @interface BulkCargoOrderDetailVC ()
@@ -30,12 +31,22 @@
 @property (nonatomic, strong) BulkLoadImageView *loadImageView;;
 @property (nonatomic, strong) BulkLoadImageView *unloadImageView;;
 @property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, strong) BulkCargoOrderDetailTrackView *trackView;
 
 @end
 
 @implementation BulkCargoOrderDetailVC
 
 #pragma mark lazy init
+- (BulkCargoOrderDetailTrackView *)trackView{
+    if (!_trackView) {
+        _trackView = [BulkCargoOrderDetailTrackView new];
+        _trackView.topToUpView = W(15);
+        [_trackView resetViewWithModel:self.modelOrder];
+    }
+    return _trackView;
+}
+
 - (UIView *)footerView{
     if (!_footerView) {
         _footerView = [UIView new];
@@ -174,7 +185,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null],self.driverView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null],self.driverView,self.trackView]];
 }
 #pragma mark request
 
