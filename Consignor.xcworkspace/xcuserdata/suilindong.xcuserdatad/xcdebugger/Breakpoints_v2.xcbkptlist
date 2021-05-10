@@ -83,8 +83,8 @@
             timestampString = "600068632.0882829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-carName"
             landmarkType = "7">
          </BreakpointContent>
@@ -184,8 +184,8 @@
             timestampString = "600068632.088414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-goodsWeight"
             landmarkType = "7">
             <Actions>

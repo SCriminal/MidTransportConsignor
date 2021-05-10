@@ -237,6 +237,9 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_OPERATE_TYPE) {
                              startlng:(NSString *)startlng
                                endlat:(NSString *)endlat
                                endlng:(NSString *)endlng
+                   trailerLicenceType:(double)trailerLicenceType
+                        trailerNumber:(NSString *)trailerNumber
+                            isTrailer:(double)isTrailer
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;

@@ -101,7 +101,9 @@
 @property (nonatomic, assign) double rejectTime;
 @property (nonatomic, assign) double acceptTime;
 @property (nonatomic, assign) double finishTime;
-
+@property (nonatomic, assign) double trailerLicenceType;
+@property (nonatomic, assign) double isTrailer;
+@property (nonatomic, strong) NSString *trailerNumber;
 @property (nonatomic, strong) NSString *key;
 
 //logical state

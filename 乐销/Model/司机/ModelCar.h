@@ -32,6 +32,9 @@
 @property (nonatomic, assign) double vehicleLoad;
 @property (nonatomic, strong) NSString *vehicleLicense;
 @property (nonatomic, assign) double userId;
+@property (nonatomic, assign) double trailerLicenceType;
+@property (nonatomic, assign) double isTrailer;
+
 //logical
 @property (nonatomic, strong) NSString *vehiclePropertyShow;
 

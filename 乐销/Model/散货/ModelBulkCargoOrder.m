@@ -98,6 +98,9 @@ NSString *const kModelBulkCargoOrderUnloadUrlList = @"unloadUrlList";
 NSString *const kModelBulkCargoOrderLoadTime = @"loadTime";
 NSString *const kModelBulkCargoOrderRejectTime = @"rejectTime";
 NSString *const kModelBulkCargoOrderUnloadTime = @"unloadTime";
+NSString *const kModelBulkCargoOrderTrailerLicenceType = @"trailerLicenceType";
+NSString *const kModelBulkCargoOrderIsTrailer = @"isTrailer";
+NSString *const kModelBulkCargoOrderTrailerNumber = @"trailerNumber";
 
 NSString *const kModelBulkCargoOrderKey = @"key";
 
@@ -422,6 +425,9 @@ NSString *const kModelBulkCargoOrderKey = @"key";
         self.unloadTime = [dict doubleValueForKey:kModelBulkCargoOrderUnloadTime];
         self.rejectTime = [dict doubleValueForKey:kModelBulkCargoOrderRejectTime];
         self.key = [dict stringValueForKey:kModelBulkCargoOrderKey];
+        self.trailerLicenceType = [dict doubleValueForKey:kModelBulkCargoOrderTrailerLicenceType];
+        self.isTrailer = [dict doubleValueForKey:kModelBulkCargoOrderIsTrailer];
+        self.trailerNumber = [dict stringValueForKey:kModelBulkCargoOrderTrailerNumber];
 
     }
     
@@ -523,6 +529,9 @@ NSString *const kModelBulkCargoOrderKey = @"key";
 
     [mutableDict setValue:[NSNumber numberWithDouble:self.rejectTime] forKey:kModelBulkCargoOrderRejectTime];
     [mutableDict setValue:self.key forKey:kModelBulkCargoOrderKey];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.trailerLicenceType] forKey:kModelBulkCargoOrderTrailerLicenceType];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isTrailer] forKey:kModelBulkCargoOrderIsTrailer];
+    [mutableDict setValue:self.trailerNumber forKey:kModelBulkCargoOrderTrailerNumber];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

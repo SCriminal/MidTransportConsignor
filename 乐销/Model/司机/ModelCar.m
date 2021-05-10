@@ -29,6 +29,8 @@ NSString *const kModelCarQualificationState = @"qualificationState";
 NSString *const kModelCarVehicleLoad = @"vehicleLoad";
 NSString *const kModelCarVehicleLicense = @"vehicleLicense";
 NSString *const kModelCarUserId = @"userId";
+NSString *const kModelCarTrailerLicenceType = @"trailerLicenceType";
+NSString *const kModelCarIsTrailer = @"isTrailer";
 
 
 @interface ModelCar ()
@@ -106,6 +108,9 @@ NSString *const kModelCarUserId = @"userId";
             self.vehicleLoad = [dict doubleValueForKey:kModelCarVehicleLoad];
             self.vehicleLicense = [dict stringValueForKey:kModelCarVehicleLicense];
             self.userId = [dict doubleValueForKey:kModelCarUserId];
+        self.trailerLicenceType = [dict doubleValueForKey:kModelCarTrailerLicenceType];
+        self.isTrailer = [dict doubleValueForKey:kModelCarIsTrailer];
+
 //logical
         [self exchangeProperty];
     }
@@ -137,6 +142,8 @@ NSString *const kModelCarUserId = @"userId";
     [mutableDict setValue:[NSNumber numberWithDouble:self.vehicleLoad] forKey:kModelCarVehicleLoad];
     [mutableDict setValue:self.vehicleLicense forKey:kModelCarVehicleLicense];
     [mutableDict setValue:[NSNumber numberWithDouble:self.userId] forKey:kModelCarUserId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.trailerLicenceType] forKey:kModelCarTrailerLicenceType];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isTrailer] forKey:kModelCarIsTrailer];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

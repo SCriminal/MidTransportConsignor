@@ -51,6 +51,8 @@
 @property (nonatomic, strong) ModelBaseData *driverPhone;
 //备注
 @property (nonatomic, strong) ModelBaseData *remark;
+//
+@property (nonatomic, strong) ModelCar *carSelected;
 
 @end
 
@@ -353,6 +355,7 @@
                 [GlobalMethod endEditing];
                 SelectCarTeamVC * selectVC = [SelectCarTeamVC new];
                 selectVC.blockSelected = ^(ModelCarTeam *modelCarTeamSeleted,ModelCar *modelDriverSelected) {
+                    weakSelf.carSelected = modelDriverSelected;
                     weakSelf.carName.subString = modelDriverSelected.vehicleNumber;
                     weakSelf.carName.identifier = strDotF(modelDriverSelected.iDProperty);
                     weakSelf.driverName.subString = modelDriverSelected.name;
@@ -411,7 +414,15 @@
     }
     return _remark;
 }
-
+- (ModelCar *)carSelected{
+    if (!_carSelected) {
+        _carSelected = [ModelCar new];
+        _carSelected.isTrailer = self.modelCopy.isTrailer;
+        _carSelected.trailerNumber = self.modelCopy.trailerNumber;
+        _carSelected.trailerLicenceType = self.modelCopy.trailerLicenceType;
+    }
+    return _carSelected;
+}
 
 #pragma mark view did load
 - (void)viewDidLoad {
@@ -435,7 +446,18 @@
 - (void)addNav{
     WEAKSELF
     BaseNavView *nav = [BaseNavView initNavBackTitle:@"发布运单" rightTitle:@"确认发布" rightBlock:^{
-        [weakSelf requestAdd];
+        if (weakSelf.carSelected.isTrailer && weakSelf.carSelected.trailerNumber.length == 0) {
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            modelDismiss.blockClick = ^{
+            };
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^(void){
+                [weakSelf requestAdd];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"根据交通部规定，牵引车运输需完善挂车信息。请于2021.6.1日之前重新提交车辆认证，否则后期将无法下单。" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+        }else{
+            [weakSelf requestAdd];
+        }
     }];
     [self.view addSubview:nav];
 }
@@ -635,7 +657,11 @@
                                       startlat:0
                                       startlng:0
                                         endlat:0
-                                        endlng:0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                                        endlng:0
+                            trailerLicenceType:self.carSelected.trailerLicenceType
+                                 trailerNumber:self.carSelected.trailerNumber
+                                     isTrailer:self.carSelected.isTrailer
+                                      delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                                             self.requestState = 1;
                                             [GlobalMethod showAlert:@"下单成功"];
                                             [GB_Nav popViewControllerAnimated:true];

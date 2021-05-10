@@ -471,6 +471,9 @@
                              startlng:(NSString *)startlng
                                endlat:(NSString *)endlat
                                endlng:(NSString *)endlng
+                   trailerLicenceType:(double)trailerLicenceType
+                        trailerNumber:(NSString *)trailerNumber
+                            isTrailer:(double)isTrailer
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -500,7 +503,11 @@
                           @"startlat":RequestStrKey(startlat),
                           @"startlng":RequestStrKey(startlng),
                           @"endlat":RequestStrKey(endlat),
-                          @"endlng":RequestStrKey(endlng)};
+                          @"endlng":RequestStrKey(endlng),
+                          @"trailerLicenceType":NSNumber.lon(trailerLicenceType),
+                          @"trailerNumber":RequestStrKey(trailerNumber),
+                          @"isTrailer":NSNumber.lon(isTrailer),
+    };
     [self postUrl:@"/zhongcheyun/bulkcargo/waybill/1" delegate:delegate parameters:dic success:success failure:failure];
 }
 
