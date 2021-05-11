@@ -15,10 +15,24 @@
 #import "EditUsualAddressVC.h"
 
 @interface UsualAddressVC ()
+@property (nonatomic, strong) SelectAddressSearchView *searchView;
+@property (nonatomic, strong) NSString *strKey;
 
 @end
 
 @implementation UsualAddressVC
+- (SelectAddressSearchView *)searchView{
+    if (!_searchView) {
+        _searchView = [SelectAddressSearchView new];
+        _searchView.top = NAVIGATIONBAR_HEIGHT;
+        WEAKSELF
+        _searchView.blockSearch = ^(NSString *key) {
+            weakSelf.strKey = key;
+            [weakSelf refreshHeaderAll];
+        };
+    }
+    return _searchView;
+}
 
 #pragma mark view did load
 - (void)viewDidLoad {
@@ -27,6 +41,12 @@
     [self addNav];
     //table
     [self.tableView registerClass:[UsualAddressCell class] forCellReuseIdentifier:@"UsualAddressCell"];
+    if (self.blockSelected) {
+        self.tableView.height = SCREEN_HEIGHT - self.searchView.bottom;
+        [self.view addSubview:self.searchView];
+        self.tableView.top = self.searchView.bottom;
+    }
+   
     //request
     [self requestList];
     [self addRefreshHeader];
@@ -82,7 +102,7 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestUsuslAddressListWithId:0 type:0 countyName:nil provinceName:nil cityName:nil countyId:0 entId:strDotF([GlobalData sharedInstance].GB_CompanyModel.iDProperty) townId:0 provinceId:0 townName:nil cityId:0 phone:nil contact:nil entName:nil startTime:0 endTime:nil page:self.pageNum count:@"50" detailAddr:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestUsuslAddressListWithId:0 type:0 countyName:nil provinceName:nil cityName:nil countyId:0 entId:strDotF([GlobalData sharedInstance].GB_CompanyModel.iDProperty) townId:0 provinceId:0 townName:nil cityId:0 phone:nil contact:nil entName:self.strKey startTime:0 endTime:nil page:self.pageNum count:@"50" detailAddr:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         if (![response isKindOfClass:[NSDictionary class]]) {
             return ;
         }

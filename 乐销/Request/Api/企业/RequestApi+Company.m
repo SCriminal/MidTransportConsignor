@@ -629,7 +629,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
 //                          @"cityId":NSNumber.dou(cityId),
 //                          @"phone":RequestStrKey(phone),
 //                          @"contact":RequestStrKey(contact),
-//                          @"entName":RequestStrKey(entName),
+                          @"entName":RequestStrKey(entName),
 //                          @"startTime":NSNumber.dou(startTime),
 //                          @"endTime":RequestStrKey(endTime),
 //                          @"detailAddr":RequestStrKey(detailAddr),

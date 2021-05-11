@@ -21,3 +21,16 @@
 - (void)resetCellWithModel:(ModelUsualAddress *)model;
 
 @end
+
+@interface SelectAddressSearchView : UIView<UITextFieldDelegate>
+//属性
+@property (strong, nonatomic) UIButton *btnSearch;
+@property (strong, nonatomic) UITextField *tfSearch;
+@property (strong, nonatomic) UIImageView *iconSearch;
+@property (strong, nonatomic) UIView *viewBG;
+@property (nonatomic, strong) void (^blockSearch)(NSString *);
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(id)model;
+
+@end
