@@ -92,12 +92,13 @@
             model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelCargo.actualLoad),UnPackStr(modelCargo.loadUnit)];
             return model;
         }()];
-//            [aryModels addObject:^(){
-//                ModelBtn * model = [ModelBtn new];
-//                model.title = @"车        型：";
-//                model.subTitle = [NSString stringWithFormat:@"%@",[GlobalMethod exchangeCarType:modelCargo.vehicleType]];
-//                return model;
-//            }()];
+        [aryModels addObject:^(){
+            ModelBtn * model = [ModelBtn new];
+            model.title = @"承  运  方：";
+            model.subTitle = @"中车运";
+            return model;
+        }()];
+
 
         
             

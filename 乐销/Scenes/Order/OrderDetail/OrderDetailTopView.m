@@ -140,6 +140,13 @@
                 model.isSelected = false;
                 return model;
             }()];
+            [aryModels addObject:^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"承  运  方：";
+                model.subTitle = @"中车运";
+                model.isSelected = false;
+                return model;
+            }()];
             if (![modelPackage isEqual:ary.lastObject]) {
                 [aryModels addObject:^(){
                     ModelBtn * model = [ModelBtn new];
